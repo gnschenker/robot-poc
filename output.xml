@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20160706 14:58:18.243" generator="Robot 3.0 (Python 2.7.10 on darwin)">
+<suite source="/Users/gabrielschenker/playground/robot/tests.robot" id="s1" name="Tests">
+<kw type="setup" name="Clear login database">
+<kw name="Remove File" library="OperatingSystem">
+<doc>Removes a file with the given path.</doc>
+<arguments>
+<arg>${DATABASE FILE}</arg>
+</arguments>
+<msg timestamp="20160706 14:58:18.276" html="yes" level="INFO">File '&lt;a href="file:///var/folders/b8/c2lykmxx2fs2mgghmnxrsk1c0000gp/T/robotframework-quickstart-db.txt"&gt;/var/folders/b8/c2lykmxx2fs2mgghmnxrsk1c0000gp/T/robotframework-quickstart-db.txt&lt;/a&gt;' does not exist.</msg>
+<status status="PASS" endtime="20160706 14:58:18.276" starttime="20160706 14:58:18.276"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.276" starttime="20160706 14:58:18.276"></status>
+</kw>
+<test id="s1-t1" name="User can create an account and log in">
+<kw name="Create valid user">
+<arguments>
+<arg>fred</arg>
+<arg>P4ssw0rd</arg>
+</arguments>
+<kw name="Create User" library="LoginLibrary">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.303" starttime="20160706 14:58:18.277"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>SUCCESS</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.304" starttime="20160706 14:58:18.303"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.304" starttime="20160706 14:58:18.277"></status>
+</kw>
+<kw name="Attempt To Login With Credentials" library="LoginLibrary">
+<arguments>
+<arg>fred</arg>
+<arg>P4ssw0rd</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.327" starttime="20160706 14:58:18.304"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Logged In</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.328" starttime="20160706 14:58:18.327"></status>
+</kw>
+<kw type="teardown" name="Clear login database">
+<kw name="Remove File" library="OperatingSystem">
+<doc>Removes a file with the given path.</doc>
+<arguments>
+<arg>${DATABASE FILE}</arg>
+</arguments>
+<msg timestamp="20160706 14:58:18.329" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/b8/c2lykmxx2fs2mgghmnxrsk1c0000gp/T/robotframework-quickstart-db.txt"&gt;/var/folders/b8/c2lykmxx2fs2mgghmnxrsk1c0000gp/T/robotframework-quickstart-db.txt&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20160706 14:58:18.329" starttime="20160706 14:58:18.328"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.329" starttime="20160706 14:58:18.328"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.329" critical="yes" starttime="20160706 14:58:18.276"></status>
+</test>
+<test id="s1-t2" name="User cannot log in with bad password">
+<kw name="Create valid user">
+<arguments>
+<arg>betty</arg>
+<arg>P4ssw0rd</arg>
+</arguments>
+<kw name="Create User" library="LoginLibrary">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.353" starttime="20160706 14:58:18.330"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>SUCCESS</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.354" starttime="20160706 14:58:18.353"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.354" starttime="20160706 14:58:18.330"></status>
+</kw>
+<kw name="Attempt To Login With Credentials" library="LoginLibrary">
+<arguments>
+<arg>betty</arg>
+<arg>wrong</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.378" starttime="20160706 14:58:18.354"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Access Denied</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.378" starttime="20160706 14:58:18.378"></status>
+</kw>
+<kw type="teardown" name="Clear login database">
+<kw name="Remove File" library="OperatingSystem">
+<doc>Removes a file with the given path.</doc>
+<arguments>
+<arg>${DATABASE FILE}</arg>
+</arguments>
+<msg timestamp="20160706 14:58:18.379" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/b8/c2lykmxx2fs2mgghmnxrsk1c0000gp/T/robotframework-quickstart-db.txt"&gt;/var/folders/b8/c2lykmxx2fs2mgghmnxrsk1c0000gp/T/robotframework-quickstart-db.txt&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20160706 14:58:18.379" starttime="20160706 14:58:18.379"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.380" starttime="20160706 14:58:18.379"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.380" critical="yes" starttime="20160706 14:58:18.329"></status>
+</test>
+<test id="s1-t3" name="User can change password">
+<kw name="Given a user has a valid account">
+<kw name="Create valid user">
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<kw name="Create User" library="LoginLibrary">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.403" starttime="20160706 14:58:18.381"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>SUCCESS</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.403" starttime="20160706 14:58:18.403"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.403" starttime="20160706 14:58:18.380"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.404" starttime="20160706 14:58:18.380"></status>
+</kw>
+<kw name="When she changes her password">
+<kw name="Change Password" library="LoginLibrary">
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${NEW PASSWORD}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.426" starttime="20160706 14:58:18.404"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>SUCCESS</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.426" starttime="20160706 14:58:18.426"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.427" starttime="20160706 14:58:18.404"></status>
+</kw>
+<kw name="Then she can log in with the new password">
+<kw name="Login">
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${NEW PASSWORD}</arg>
+</arguments>
+<kw name="Attempt To Login With Credentials" library="LoginLibrary">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.450" starttime="20160706 14:58:18.428"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Logged In</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.451" starttime="20160706 14:58:18.450"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.451" starttime="20160706 14:58:18.427"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.451" starttime="20160706 14:58:18.427"></status>
+</kw>
+<kw name="And she cannot use the old password anymore">
+<kw name="Attempt To Login With Credentials" library="LoginLibrary">
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.475" starttime="20160706 14:58:18.451"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Access Denied</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.475" starttime="20160706 14:58:18.475"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.476" starttime="20160706 14:58:18.451"></status>
+</kw>
+<kw type="teardown" name="Clear login database">
+<kw name="Remove File" library="OperatingSystem">
+<doc>Removes a file with the given path.</doc>
+<arguments>
+<arg>${DATABASE FILE}</arg>
+</arguments>
+<msg timestamp="20160706 14:58:18.477" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/b8/c2lykmxx2fs2mgghmnxrsk1c0000gp/T/robotframework-quickstart-db.txt"&gt;/var/folders/b8/c2lykmxx2fs2mgghmnxrsk1c0000gp/T/robotframework-quickstart-db.txt&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20160706 14:58:18.477" starttime="20160706 14:58:18.476"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.477" starttime="20160706 14:58:18.476"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.477" critical="yes" starttime="20160706 14:58:18.380"></status>
+</test>
+<test id="s1-t4" name="Invalid password">
+<kw name="Creating user with invalid password should fail">
+<arguments>
+<arg>abCD5</arg>
+<arg>${PWD INVALID LENGTH}</arg>
+</arguments>
+<kw name="Create User" library="LoginLibrary">
+<arguments>
+<arg>example</arg>
+<arg>${password}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.502" starttime="20160706 14:58:18.478"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Creating user failed: ${error}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.503" starttime="20160706 14:58:18.502"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.503" starttime="20160706 14:58:18.478"></status>
+</kw>
+<kw name="Creating user with invalid password should fail">
+<arguments>
+<arg>abCD567890123</arg>
+<arg>${PWD INVALID LENGTH}</arg>
+</arguments>
+<kw name="Create User" library="LoginLibrary">
+<arguments>
+<arg>example</arg>
+<arg>${password}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.526" starttime="20160706 14:58:18.504"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Creating user failed: ${error}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.527" starttime="20160706 14:58:18.527"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.527" starttime="20160706 14:58:18.503"></status>
+</kw>
+<kw name="Creating user with invalid password should fail">
+<arguments>
+<arg>123DEFG</arg>
+<arg>${PWD INVALID CONTENT}</arg>
+</arguments>
+<kw name="Create User" library="LoginLibrary">
+<arguments>
+<arg>example</arg>
+<arg>${password}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.550" starttime="20160706 14:58:18.528"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Creating user failed: ${error}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.550" starttime="20160706 14:58:18.550"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.551" starttime="20160706 14:58:18.528"></status>
+</kw>
+<kw name="Creating user with invalid password should fail">
+<arguments>
+<arg>abcd56789</arg>
+<arg>${PWD INVALID CONTENT}</arg>
+</arguments>
+<kw name="Create User" library="LoginLibrary">
+<arguments>
+<arg>example</arg>
+<arg>${password}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.575" starttime="20160706 14:58:18.551"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Creating user failed: ${error}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.576" starttime="20160706 14:58:18.576"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.577" starttime="20160706 14:58:18.551"></status>
+</kw>
+<kw name="Creating user with invalid password should fail">
+<arguments>
+<arg>AbCdEfGh</arg>
+<arg>${PWD INVALID CONTENT}</arg>
+</arguments>
+<kw name="Create User" library="LoginLibrary">
+<arguments>
+<arg>example</arg>
+<arg>${password}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.601" starttime="20160706 14:58:18.577"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Creating user failed: ${error}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.602" starttime="20160706 14:58:18.602"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.602" starttime="20160706 14:58:18.577"></status>
+</kw>
+<kw name="Creating user with invalid password should fail">
+<arguments>
+<arg>abCD56+</arg>
+<arg>${PWD INVALID CONTENT}</arg>
+</arguments>
+<kw name="Create User" library="LoginLibrary">
+<arguments>
+<arg>example</arg>
+<arg>${password}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.626" starttime="20160706 14:58:18.603"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Creating user failed: ${error}</arg>
+</arguments>
+<status status="PASS" endtime="20160706 14:58:18.627" starttime="20160706 14:58:18.627"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.627" starttime="20160706 14:58:18.602"></status>
+</kw>
+<kw type="teardown" name="Clear login database">
+<kw name="Remove File" library="OperatingSystem">
+<doc>Removes a file with the given path.</doc>
+<arguments>
+<arg>${DATABASE FILE}</arg>
+</arguments>
+<msg timestamp="20160706 14:58:18.629" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/b8/c2lykmxx2fs2mgghmnxrsk1c0000gp/T/robotframework-quickstart-db.txt"&gt;/var/folders/b8/c2lykmxx2fs2mgghmnxrsk1c0000gp/T/robotframework-quickstart-db.txt&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20160706 14:58:18.629" starttime="20160706 14:58:18.628"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.629" starttime="20160706 14:58:18.628"></status>
+</kw>
+<status status="PASS" endtime="20160706 14:58:18.629" critical="yes" starttime="20160706 14:58:18.477"></status>
+</test>
+<status status="PASS" endtime="20160706 14:58:18.629" starttime="20160706 14:58:18.247"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Tests" pass="4">Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

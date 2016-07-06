@@ -1,38 +1,3 @@
-*** Test Cases ***
-User can create an account and log in
-    Create Valid User    fred    P4ssw0rd
-    Attempt to Login with Credentials    fred    P4ssw0rd
-    Status Should Be    Logged In
-
-
-User cannot log in with bad password
-    Create Valid User    betty    P4ssw0rd
-    Attempt to Login with Credentials    betty    wrong
-    Status Should Be    Access Denied
-
-User can change password
-    Given a user has a valid account
-    When she changes her password
-    Then she can log in with the new password
-    And she cannot use the old password anymore
-
-Invalid password
-    [Template]    Creating user with invalid password should fail
-    abCD5            ${PWD INVALID LENGTH}
-    abCD567890123    ${PWD INVALID LENGTH}
-    123DEFG          ${PWD INVALID CONTENT}
-    abcd56789        ${PWD INVALID CONTENT}
-    AbCdEfGh         ${PWD INVALID CONTENT}
-    abCD56+          ${PWD INVALID CONTENT}
-
-User status is stored in database
-    [Tags]    variables    database
-    Create Valid User    ${USERNAME}    ${PASSWORD}
-    Database Should Contain    ${USERNAME}    ${PASSWORD}    Inactive
-    Login    ${USERNAME}    ${PASSWORD}
-    Database Should Contain    ${USERNAME}    ${PASSWORD}    Active
-
-
 *** Variables ***
 ${USERNAME}               janedoe
 ${PASSWORD}               J4n3D0e
@@ -42,10 +7,9 @@ ${PWD INVALID LENGTH}     Password must be 7-12 characters long
 ${PWD INVALID CONTENT}    Password must be a combination of lowercase and uppercase letters and numbers
 
 *** Settings ***
+Documentation     Example suite
 Library           OperatingSystem
-Library           lib/LoginLibrary.py
-Suite Setup       Clear login database
-Test Teardown     Clear Login Database
+Library           ../../../lib/LoginLibrary.py
 
 *** Keywords ***
 Clear login database
